@@ -1,0 +1,21 @@
+services:
+  web:
+    # في الإنتاج نسحب الصورة الجاهزة بدل البناء
+    image: ghcr.io/USERNAME/my-react-app:latest
+    restart: unless-stopped
+    expose:
+      - "80"
+  
+
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./certbot/conf:/etc/letsencrypt:ro
+      - ./certbot/www:/var/www/certbot:ro
+    depends_on:
+      - web

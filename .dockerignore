@@ -1,5 +1,6 @@
 node_modules
 dist
+build
 .git
 .gitignore
 .env
@@ -7,5 +8,7 @@ dist
 *.md
 .vscode
 .DS_Store
+coverage
 Dockerfile
-docker-compose.yml
+docker-compose*.yml
+.github

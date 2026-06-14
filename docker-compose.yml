@@ -1,8 +1,13 @@
 services:
-  frontend:
-    build: .
-    image: my-react-app:1.0
-    container_name: react-app
+  web:
+    build:
+      context: .
+      target: build        # مرحلة البناء (فيها أدوات التطوير)
+    command: npm run dev -- --host
     ports:
-      - "80:80"
-    restart: unless-stopped
+      - "5173:5173"
+    volumes:
+      - .:/app             # مزامنة الكود للتحديث الحي
+      - /app/node_modules  # حماية مكتبات الحاوية
+    env_file:
+      - .env.development
