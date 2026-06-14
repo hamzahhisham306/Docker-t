@@ -1,7 +1,7 @@
 services:
   web:
     # في الإنتاج نسحب الصورة الجاهزة بدل البناء
-    image: ghcr.io/USERNAME/my-react-app:latest
+    image: ghcr.io/hamzahhisham306/docker-t:latest
     restart: unless-stopped
     expose:
       - "80"
